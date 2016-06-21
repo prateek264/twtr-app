@@ -1,9 +1,0 @@
-2016-06-19 15:20:54.242 [main] INFO  com.twtr.app.TwitterApp - Tracking twitter stream:
-2016-06-19 15:20:54.259 [main] INFO  com.twtr.app.TwitterApp - Starting Twitter Streaming: com.twtr.processor.StreamProcessor@1d8d30f7.
-2016-06-19 15:20:54.259 [main] INFO  com.twtr.app.TwitterApp - Starting tweet processor.
-2016-06-19 15:20:54.280 [main] INFO  com.twtr.app.TwitterApp - Top 10 Related Hashtags for the term: 2016, {}. Total Tweets Processed: 0
-2016-06-19 15:20:54.293 [Twitter Stream consumer-1[initializing]] INFO  twitter4j.TwitterStreamImpl - Establishing connection.
-2016-06-19 15:20:55.509 [Twitter Stream consumer-1[initializing]] INFO  twitter4j.TwitterStreamImpl - Connection established.
-2016-06-19 15:20:55.509 [Twitter Stream consumer-1[initializing]] INFO  twitter4j.TwitterStreamImpl - Receiving status stream.
-2016-06-19 15:21:24.289 [main] INFO  com.twtr.app.TwitterApp - Top 10 Related Hashtags for the term: 2016, {#네임드사다리=35, #えどがわイケメン=34, #六弥ナギ生誕祭2016=25, #RTした人全員フォローする=19, #TonyAwards=14, #네임드사다리놀이터추천=12, #NBAFinals=10, #NBAmixtape=8, #太宰治生誕祭2016=8, #안전놀이터=8}. Total Tweets Processed: 1369
-2016-06-19 15:21:54.299 [main] INFO  com.twtr.app.TwitterApp - Top 10 Related Hashtags for the term: 2016, {#えどがわイケメン=74, #네임드사다리=57, #六弥ナギ生誕祭2016=45, #RTした人全員フォローする=29, #NBAFinals=21, #NBAmixtape=16, #안전놀이터=16, #太宰治生誕祭2016=15, #TonyAwards=14, #네임드사다리놀이터추천=12}. Total Tweets Processed: 2748
