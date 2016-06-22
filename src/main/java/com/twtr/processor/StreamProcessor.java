@@ -13,7 +13,7 @@ import com.twtr.listener.StreamListener;
 /**
  * 
  * @author pchaturvedi
- *
+ * with references from https://dev.twitter.com/oauth/overview/authorizing-requests
  */
 public class StreamProcessor implements Runnable {
 
