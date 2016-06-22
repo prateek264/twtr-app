@@ -1,5 +1,6 @@
 package com.twtr.app;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -10,6 +11,7 @@ import com.twtr.processor.TweetQueueManager;
 /**
  * 
  * @author pchaturvedi
+ * With references from following pages
  *https://dev.twitter.com/streaming/overview/request-parameters
  *https://dev.twitter.com/oauth/overview/authorizing-requests
  *http://code.tutsplus.com/tutorials/building-with-the-twitter-api-using-real-time-streams--cms-22194
@@ -22,9 +24,11 @@ import com.twtr.processor.TweetQueueManager;
  *http://codereview.stackexchange.com/questions/52560/twitter-streaming-client-round2
  *http://codereview.stackexchange.com/questions/52014/twitter-streaming-api-client-identifying-the-top-trending-hashtags-for-a-specif
  */
+
 public class TwitterApp {
 	
 	private static final Logger LOGGER = Logger.getLogger(TwitterApp.class);
+	private static final String OUTPUT_FORMAT = "Top 10 Hastags associated with string [%s] at %s are %s";
     private final TweetQueueManager tweetQueueManager;
     private StreamProcessor streamProcessor;
 
@@ -34,22 +38,32 @@ public class TwitterApp {
     }
 
     public static void main(String[] args) {
-        if (args.length == 0) {        	
+        if (args.length == 1) {        	
         	LOGGER.info("Tracking twitter stream:");
-            TwitterApp application = new TwitterApp("2016");
+        	String stringToTrack = args[0];
+            TwitterApp application = new TwitterApp(stringToTrack);
             application.startStreaming();
             application.startProcessingTweets();
-            application.outputTop10Every30Seconds();
+            application.outputTop10HashesEvery30Seconds();
+            
         } else {
-            System.out.println("Invalid number of arguments. Usage: Lotus [keyword, hashtag, or string]");
-            System.exit(-1);
+        	System.out.println("*******************************************************************");
+            System.out.println("No String specified to track, exiting!" );
+            System.out.println("*******************************************************************");
         }
     }
 
+    /**
+     * reads top 10 hashtags from the map
+     * @return
+     */
     public Map<String, Integer> getTopTenHashtags() {
         return tweetQueueManager.getTopNHashtags(10);
     }
-
+    
+    /**
+     * starts twitter stream
+     */
     private void startStreaming() {
         Thread twitterStream = new Thread(streamProcessor);
         LOGGER.info("Starting Twitter Streaming: " + streamProcessor.toString() + ".");
@@ -63,11 +77,11 @@ public class TwitterApp {
         processTweets.start();
     }
 
-    private void outputTop10Every30Seconds() {
+    private void outputTop10HashesEvery30Seconds() {
         while (true) {
-            LOGGER.info("Top 10 Related Hashtags for the term: " +
-            		streamProcessor.getTrackedTerm() + ", " +
-                    getTopTenHashtags());
+            LOGGER.debug(String.format(OUTPUT_FORMAT, streamProcessor.getTrackedTerm(),new Date() ,getTopTenHashtags()));
+            System.out.println("*******************************************************************");
+            System.out.println(String.format(OUTPUT_FORMAT, streamProcessor.getTrackedTerm(),new Date() ,getTopTenHashtags()));
             try {
                 Thread.sleep(30000);
             } catch (InterruptedException ex) {
