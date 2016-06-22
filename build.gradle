@@ -5,8 +5,9 @@ sourceCompatibility = 1.8
 version = '1.0'
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
+        attributes 'Implementation-Title': 'Twitter App',
+                   'Implementation-Version': 1.0,
+                   'Main-Class': 'com.twtr.app.TwitterApp'
     }
 }
 
@@ -27,7 +28,7 @@ dependencies {
 }
 
 test {
-    systemProperties 'property': 'value'
+    systemProperties 'testString': '2016'
 }
 
 uploadArchives {
@@ -36,4 +37,12 @@ uploadArchives {
            dirs 'repos'
        }
     }
+}
+task runTwitterApp(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'com.twtr.app.TwitterApp'
+  if (project.hasProperty('arg1')){
+  args "$arg1"
+  }
+ 
 }
