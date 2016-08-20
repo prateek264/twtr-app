@@ -17,10 +17,10 @@ import com.twtr.listener.StreamListener;
  */
 public class StreamProcessor implements Runnable {
 
-	private static final String CONSUMER_KEY = "Yu7E11cRV4xUKD3q9GpJgxdRu";
-	private static final String CONSUMER_SECRET = "pDD22SEBB6ExZctFzByj6fXr0Zz1JBnsZrW7xEQpUi4yEysexS";
-	private static final String ACCESS_TOKEN = "3085783995-gBtZmpmxsw46NwoFdpsyhRJ7Hii30sUC3dQRuU6";
-	private static final String ACCESS_TOKEN_SECRET = "GFtpLrsQ8XpHkhmQIbdqmli0MFkNuU3vwKBEoreKriMIy";
+	private static final String CONSUMER_KEY = "something";
+	private static final String CONSUMER_SECRET = "something";
+	private static final String ACCESS_TOKEN = "3085783995-something";
+	private static final String ACCESS_TOKEN_SECRET = "something";
 	
 	private String trackedTerm;
     private TweetQueueManager tweetQueueManager;
